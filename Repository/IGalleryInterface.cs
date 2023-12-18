@@ -11,5 +11,8 @@ namespace VirtualArtGalleryApp.Repository
     {  
         Gallery GetGalleryById(int galleryId);
         void DisplayAllGalleries();
+        void AddGallery(Gallery gallery);
+        void UpdateGallery(Gallery gallery);
+        void DeleteGallery(int galleryId);
     }
 }

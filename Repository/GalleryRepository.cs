@@ -144,6 +144,58 @@ namespace VirtualArtGalleryApp.Repository
         }
 
 
+        public void AddGallery(Gallery gallery)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("INSERT INTO Gallery (Name, Description, Location, CuratorID, OpeningHours) " +
+                                                    "VALUES (@Name, @Description, @Location, @CuratorID, @OpeningHours)", connection);
+                command.Parameters.AddWithValue("@Name", gallery.Name);
+                command.Parameters.AddWithValue("@Description", gallery.Description);
+                command.Parameters.AddWithValue("@Location", gallery.Location);
+                command.Parameters.AddWithValue("@CuratorID", gallery.ArtistID);
+                command.Parameters.AddWithValue("@OpeningHours", gallery.OpeningHours);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateGallery(Gallery gallery)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("UPDATE Gallery SET Name = @Name, Description = @Description, " +
+                                                    "Location = @Location, CuratorID = @CuratorID, OpeningHours = @OpeningHours " +
+                                                    "WHERE GalleryID = @GalleryID", connection);
+                command.Parameters.AddWithValue("@Name", gallery.Name);
+                command.Parameters.AddWithValue("@Description", gallery.Description);
+                command.Parameters.AddWithValue("@Location", gallery.Location);
+                command.Parameters.AddWithValue("@CuratorID", gallery.ArtistID);
+                command.Parameters.AddWithValue("@OpeningHours", gallery.OpeningHours);
+                command.Parameters.AddWithValue("@GalleryID", gallery.GalleryID);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteGallery(int galleryId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("DELETE FROM Gallery WHERE GalleryID = @GalleryID", connection);
+                command.Parameters.AddWithValue("@GalleryID", galleryId);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
     }
 
 

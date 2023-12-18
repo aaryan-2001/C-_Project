@@ -270,5 +270,36 @@ namespace VirtualArtGalleryApp.Repository
             return null;
         }
 
+        //Here Authenticate user for login 
+
+        public bool AuthenticateUser(string username, string password)
+        {
+            try
+            {
+                string connectionString = "Server=LAPTOP-2GDF0DQD; Database=VirtualArtGalleryDB; Trusted_Connection=True";
+
+                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE Username = @Username AND Password = @Password", sqlConnection))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        sqlConnection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            return reader.HasRows; // If there are rows, authentication is successful
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Login Failed; {ex.Message}");
+                return false;
+            }
+        }
+
     }
 }

@@ -67,7 +67,7 @@ namespace VirtualArtGalleryApp.Repository
             return artists.Find(a => a.ArtistID == artistId);
         }*/
 
-        public ArtistRepository() 
+        public ArtistRepository()
         {
             connectionString = DbConnUtil.GetConnectionString();
             cmd = new SqlCommand();
@@ -119,5 +119,62 @@ namespace VirtualArtGalleryApp.Repository
             }
         }
 
+        public void AddArtist(Artist artist)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO Artists (Name, Biography, BirthDate, Nationality, Website, ContactInformation) " +
+                               "VALUES (@Name, @Biography, @BirthDate, @Nationality, @Website, @ContactInformation)";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", artist.Name);
+                command.Parameters.AddWithValue("@Biography", artist.Biography);
+                command.Parameters.AddWithValue("@BirthDate", artist.BirthDate);
+                command.Parameters.AddWithValue("@Nationality", artist.Nationality);
+                command.Parameters.AddWithValue("@Website", artist.Website);
+                command.Parameters.AddWithValue("@ContactInformation", artist.ContactInformation);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateArtist(Artist artist)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "UPDATE Artists SET Name = @Name, Biography = @Biography, BirthDate = @BirthDate, " +
+                               "Nationality = @Nationality, Website = @Website, ContactInformation = @ContactInformation " +
+                               "WHERE ArtistID = @ArtistID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ArtistID", artist.ArtistID);
+                command.Parameters.AddWithValue("@Name", artist.Name);
+                command.Parameters.AddWithValue("@Biography", artist.Biography);
+                command.Parameters.AddWithValue("@BirthDate", artist.BirthDate);
+                command.Parameters.AddWithValue("@Nationality", artist.Nationality);
+                command.Parameters.AddWithValue("@Website", artist.Website);
+                command.Parameters.AddWithValue("@ContactInformation", artist.ContactInformation);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteArtist(int artistID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Artists WHERE ArtistID = @ArtistID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ArtistID", artistID);
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

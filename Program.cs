@@ -199,7 +199,9 @@ namespace VirtualArtGalleryApp
 							Console.Write("Enter password: ");
 							string password = Console.ReadLine();
 
-							if (AuthenticateUser(username, password))
+							
+
+							if (Iuserobj.AuthenticateUser(username, password))
 							{
 								Console.WriteLine("\nLogin successful!\n");
 								isLoggedIn = true;
@@ -207,8 +209,10 @@ namespace VirtualArtGalleryApp
 
 								while (true)
 								{
-									Console.WriteLine($"\nWelcome, {loggedInUsername}!\n");
-									Console.WriteLine("1. Update Profile");
+                                    Console.WriteLine("\n==============================================================");
+                                    Console.WriteLine($"\nWelcome, {loggedInUsername}!\n");
+                                    Console.WriteLine("==============================================================\n");
+                                    Console.WriteLine("1. Update Profile");
 									Console.WriteLine("2. View Gallery");
 									Console.WriteLine("3. Search Gallery");
                                     Console.WriteLine("4. View Artworks");
@@ -220,9 +224,10 @@ namespace VirtualArtGalleryApp
                                     Console.WriteLine("10. View User Profile");
                                     Console.WriteLine("11. Delete Account");
                                     Console.WriteLine("12. Logout\n");
-                                    
+                                    Console.WriteLine("==============================================================");
 
-									Console.Write("\nPlease Enter your choice: ");
+
+                                    Console.Write("\nPlease Enter your choice: ");
 									string userProfileChoice = Console.ReadLine();
 
 									switch (userProfileChoice)
@@ -290,7 +295,7 @@ namespace VirtualArtGalleryApp
                                                         Console.WriteLine($"\nLocation: {foundGallery.Location}");
                                                         Console.WriteLine($"\nArtist ID: {foundGallery.ArtistID}");
                                                         Console.WriteLine($"\nOpening Hours: {foundGallery.OpeningHours}");
-                                                        Console.WriteLine("\n==============================================================");
+                                                        
                                                     }
                                                     else
                                                     {
@@ -348,7 +353,7 @@ namespace VirtualArtGalleryApp
                                                         Console.WriteLine($"Title: {foundArtwork.Title}");
                                                         Console.WriteLine($"Description: {foundArtwork.Description}");
                                                         Console.WriteLine($"Medium :  {foundArtwork.Medium}");
-														Console.WriteLine("\n=====================================================================");
+														
                                                      }
                                                     else
                                                     {
@@ -442,7 +447,7 @@ namespace VirtualArtGalleryApp
 														Console.WriteLine($"Contact Information: {foundArtist.ContactInformation}");
 														Console.WriteLine($"Nationality: {foundArtist.Nationality}");
 														Console.WriteLine($"Artist ID: {foundArtist.ArtistID}\n");
-                                                        Console.WriteLine("\n==================================================================");
+                                                        
 
                                                     }
 													else
@@ -590,36 +595,6 @@ namespace VirtualArtGalleryApp
 			}
 
 
-			//Here Authenticate user for login 
-
-			bool AuthenticateUser(string username, string password)
-			{
-				try
-				{
-					string connectionString = "Server=LAPTOP-2GDF0DQD; Database=VirtualArtGalleryDB; Trusted_Connection=True";
-
-					using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-					{
-						using (SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE Username = @Username AND Password = @Password", sqlConnection))
-						{
-							cmd.Parameters.AddWithValue("@Username", username);
-							cmd.Parameters.AddWithValue("@Password", password);
-
-							sqlConnection.Open();
-
-							using (SqlDataReader reader = cmd.ExecuteReader())
-							{
-								return reader.HasRows; // If there are rows, authentication is successful
-							}
-						}
-					}
-				}
-				catch (SqlException ex)
-				{
-					Console.WriteLine($"Login Failed; {ex.Message}");
-					return false;
-				}
-			}
 			#endregion
 			
         }

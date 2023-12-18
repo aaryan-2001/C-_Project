@@ -9,9 +9,9 @@ namespace VirtualArtGalleryApp.Repository
 {
     internal interface IArtistInterface
     {
-        //int AddArtist(Artist artist);
-        //int UpdateArtist(Artist artist);
-        //int RemoveArtist(int artistId);
+        void AddArtist(Artist artist);
+        void UpdateArtist(Artist artist);
+        void DeleteArtist(int artistID);
         Artist GetArtistById(int artistId);
     }
 }

@@ -12,9 +12,12 @@ namespace VirtualArtGalleryApp.Repository
         int AddUser(User user);
         int UpdateUser(User updatedUser);
         int DeleteUser(string username);
-       // List<User> DisplayAllUsers();
+        // List<User> DisplayAllUsers();
 
         User UserProfile(string username);
+        //Here Authenticate user for login 
+        bool AuthenticateUser(string username, string password);
+        
+
     }
-    
 }

@@ -9,11 +9,9 @@ namespace VirtualArtGalleryApp.Repository
 {
     internal interface IArtworkInterface
     {
-        // Artwork Management
-        //bool AddArtwork(Artwork artwork);
-        //bool UpdateArtwork(Artwork artwork);
-        //bool RemoveArtwork(int artworkId);
-
+        void AddArtwork(Artwork artwork);
+        void UpdateArtwork(Artwork artwork);
+        void RemoveArtwork(int artworkID);
         List<Artwork> BrowseArtworks();
         Artwork GetArtworkById(int artworkId);
         //List<Artwork> SearchArtworks(string keyword);

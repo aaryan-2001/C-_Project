@@ -14,13 +14,14 @@ namespace VirtualArtGalleryApp.Entity
 		private string creationDate;
 		private string medium;
 		private string imageURL;
+		private int artistID;
 
 		// Default constructor
 		public Artwork() { }
 
 		// Parameterized constructor
 		// This keyword is used here to indicate that it is using current variables
-		public Artwork(int artworkID, string title, string description, string creationDate, string medium, string imageURL)
+		public Artwork(int artworkID, string title, string description, string creationDate, string medium, string imageURL, int artistID)
 		{
 			this.artworkID = artworkID;
 			this.title = title;
@@ -28,6 +29,7 @@ namespace VirtualArtGalleryApp.Entity
 			this.creationDate = creationDate;
 			this.medium = medium;
 			this.imageURL = imageURL;
+			this.artistID = artistID;
 		}
 
 		// Get and Set Using Auto Implemented properties
@@ -38,6 +40,7 @@ namespace VirtualArtGalleryApp.Entity
 		public string CreationDate { get { return creationDate; } set { creationDate = value; } }
 		public string Medium { get { return medium; } set { medium = value; } }
 		public string ImageURL { get { return imageURL; } set { imageURL = value; } }
+		public int ArtistID { get { return artistID; } set { artistID = value; } }
 
 		// ToString() method
 

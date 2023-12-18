@@ -81,7 +81,6 @@ E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\Microsoft.IdentityModel.Protocols.xml
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\nunit.framework.pdb
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\nunit.framework.xml
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\System.Configuration.ConfigurationManager.xml
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\System.Diagnostics.DiagnosticSource.xml
@@ -101,3 +100,6 @@ E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\testcentric.engine.metadata.dll
+E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\nunit.framework.legacy.dll
+E:\VISUAL STUDIO ASPNET\Repository\VirtualArtGalleryApp\VirtualArtGalleryApp\bin\Debug\nunit.framework.legacy.xml

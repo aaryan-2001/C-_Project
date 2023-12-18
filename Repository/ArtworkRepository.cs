@@ -99,8 +99,8 @@ namespace VirtualArtGalleryApp.Repository
                                     Title = reader["Title"].ToString(),
                                     Description = reader["Description"].ToString(),
                                     Medium = reader["Medium"].ToString(),
-                                    ImageURL = reader["ImageURL"].ToString()
-
+                                    ImageURL = reader["ImageURL"].ToString(),
+                                    ArtistID = (int)reader["ArtistID"]
                                 };
 
                                 return artwork;
@@ -274,6 +274,71 @@ namespace VirtualArtGalleryApp.Repository
             {
                 Console.WriteLine($"An error occurred while retrieving user ID: {ex.Message}");
                 return 0;
+            }
+        }
+
+        public void AddArtwork(Artwork artwork)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO Artworks (Title, Description, CreationDate, Medium, ImageURL, ArtistID) " +
+                               "VALUES (@Title, @Description, @CreationDate, @Medium, @ImageURL, @ArtistID)";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Title", artwork.Title);
+                    cmd.Parameters.AddWithValue("@Description", artwork.Description);
+                    cmd.Parameters.AddWithValue("@CreationDate", artwork.CreationDate);
+                    cmd.Parameters.AddWithValue("@Medium", artwork.Medium);
+                    cmd.Parameters.AddWithValue("@ImageURL", artwork.ImageURL);
+                    cmd.Parameters.AddWithValue("@ArtistID", artwork.ArtistID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateArtwork(Artwork artwork)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "UPDATE Artworks SET Title = @Title, Description = @Description, " +
+                               "CreationDate = @CreationDate, Medium = @Medium, ImageURL = @ImageURL, " +
+                               "ArtistID = @ArtistID WHERE ArtworkID = @ArtworkID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ArtworkID", artwork.ArtworkID);
+                    cmd.Parameters.AddWithValue("@Title", artwork.Title);
+                    cmd.Parameters.AddWithValue("@Description", artwork.Description);
+                    cmd.Parameters.AddWithValue("@CreationDate", artwork.CreationDate);
+                    cmd.Parameters.AddWithValue("@Medium", artwork.Medium);
+                    cmd.Parameters.AddWithValue("@ImageURL", artwork.ImageURL);
+                    cmd.Parameters.AddWithValue("@ArtistID", artwork.ArtistID);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void RemoveArtwork(int artworkID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Artworks WHERE ArtworkID = @ArtworkID";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ArtworkID", artworkID);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
