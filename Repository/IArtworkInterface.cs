@@ -14,11 +14,7 @@ namespace VirtualArtGalleryApp.Repository
         void RemoveArtwork(int artworkID);
         List<Artwork> BrowseArtworks();
         Artwork GetArtworkById(int artworkId);
-        //List<Artwork> SearchArtworks(string keyword);
-
-
-
-        // User favourites
+        
        bool AddArtworkToFavorite(string Username, int artworkId);
         bool RemoveArtworkFromFavorite(string username, int artworkId);
         List<Artwork> GetUserFavoriteArtworks(string username);

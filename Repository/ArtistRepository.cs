@@ -15,57 +15,7 @@ namespace VirtualArtGalleryApp.Repository
         public string connectionString;
         SqlCommand cmd = null;
 
-        /*public void  AddArtist(Artist artist)
-        {
-            var ArtistExists = GetArtistById(artist.ArtistID);
-            if (ArtistExists == null)
-            {
-                artists.Add(artist);
-                Console.WriteLine($"Artist added: {artist}");
-            }
-
-        }
-
-        public void UpdateArtist(Artist artist)
-        {
-            Artist existingArtist = artists.Find(a => a.ArtistID== artist.ArtistID);
-
-            if (existingArtist != null)
-            {
-                existingArtist.Name = artist.Name;
-                existingArtist.Biography = artist.Biography;
-                existingArtist.BirthDate = artist.BirthDate;
-                existingArtist.ContactInformation = artist.ContactInformation;
-                existingArtist.Nationality = artist.Nationality;
-                existingArtist.Website = artist.Website;
-
-                Console.WriteLine($"Artist updated successfully {existingArtist}");
-            }
-            else
-            {
-                Console.WriteLine("Artist not found.");
-            }
-        }
-
-        public void RemoveArtist(int artistId)
-        {
-            Artist artistToRemove = artists.Find(a => a.ArtistID == artistId);
-            if (artistToRemove != null)
-            {
-                artists.Remove(artistToRemove);
-                Console.WriteLine($"Artist removed successfully {artistToRemove}");
-            }
-            else
-            {
-                Console.WriteLine("Artist not found.");
-                
-            }
-        }
-
-        public Artist GetArtistById(int artistId)
-        {
-            return artists.Find(a => a.ArtistID == artistId);
-        }*/
+        
 
         public ArtistRepository()
         {

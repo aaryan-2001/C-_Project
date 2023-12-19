@@ -22,7 +22,7 @@ namespace VirtualArtGalleryApp.Repository
         //constructor
         public ArtworkRepository()
         {
-            //sqlconnection = new sqlconnection("server=desktop-0te71rt;database=productappdb;trusted_connection=true");
+            
             connectionString = DbConnUtil.GetConnectionString();
             cmd = new SqlCommand();
         }
@@ -288,6 +288,7 @@ namespace VirtualArtGalleryApp.Repository
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
+                    cmd.Parameters.AddWithValue("@ArtworkID", artwork.ArtworkID);
                     cmd.Parameters.AddWithValue("@Title", artwork.Title);
                     cmd.Parameters.AddWithValue("@Description", artwork.Description);
                     cmd.Parameters.AddWithValue("@CreationDate", artwork.CreationDate);
@@ -297,6 +298,7 @@ namespace VirtualArtGalleryApp.Repository
 
                     cmd.ExecuteNonQuery();
                 }
+
             }
         }
 
@@ -342,94 +344,6 @@ namespace VirtualArtGalleryApp.Repository
             }
         }
 
-        /*
-        public bool AddArtwork(Artwork artwork)
-        {
-            
-            if (artworks.Any(a => a.ArtworkID == artwork.ArtworkID))
-            {
-                return false;
-            }
-            artworks.Add(artwork);
-            return true;  // artwork added successfully
-        }
-
-        public bool UpdateArtwork(Artwork artwork)
-        {
-            Artwork existingArtwork = GetArtworkById(artwork.ArtworkID);
-
-            if (existingArtwork != null)
-            {
-                
-                existingArtwork.Title = artwork.Title;
-                existingArtwork.Description = artwork.Description;
-                existingArtwork.CreationDate = artwork.CreationDate;
-                existingArtwork.Medium = artwork.Medium;
-                existingArtwork.ImageURL = artwork.ImageURL;
-
-                return true; // artwork updated successfully
-            }
-            return false; // artwork for updation not found
-        }
-
-
-        public bool RemoveArtwork(int artworkID)
-        {
-            int index = artworks.FindIndex(a => a.ArtworkID == artworkID);
-
-            if (index != -1)
-            {
-                artworks.RemoveAt(index);
-                return true; // artwork removed sucessfully
-            }
-            return false; //no artwork for removal found
-        }
-
-        public Artwork GetArtworkById(int artworkID)
-        {
-            return artworks.Find(a => a.ArtworkID == artworkID);
-        }
-
-
-        public List<Artwork> SearchArtworks(string keyword)
-        {
-            return artworks
-               .Where(a => a.Title.Contains(keyword) || a.Description.Contains(keyword))
-               .ToList();
-        }
-
-
-
-        // User Favourite Artworks 
-  
         
-        public bool AddArtworkToFavorite(int userId, int artworkId)
-        {
-            if (!favoriteArtwork.Any(uf => uf.UserID == userId && uf.ArtworkID == artworkId))
-            {
-                favoriteArtwork.Add(new FavoriteArtwork(userId, artworkId));
-                return true;
-            }
-            return false;
-        }
-
-        public bool RemoveArtworkFromFavorite(int userId, int artworkId)
-        {
-            var favoriteToRemove = favoriteArtwork.First(uf => uf.UserID == userId && uf.ArtworkID == artworkId);
-            if (favoriteToRemove != null)
-            {
-                favoriteArtwork.Remove(favoriteToRemove);
-                return true;
-            }
-            return false;
-        }
-
-        public List<Artwork> GetUserFavoriteArtworks(int userId)
-        {
-            var userFavoritesIds = favoriteArtwork.Where(uf => uf.UserID == userId).Select(uf => uf.ArtworkID);
-            return artworks.Where(a => userFavoritesIds.Contains(a.ArtworkID)).ToList();
-
-        }
-        */
     }
 }

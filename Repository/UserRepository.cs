@@ -22,7 +22,7 @@ namespace VirtualArtGalleryApp.Repository
         //constructor
         public UserRepository()
         {
-            //sqlconnection = new sqlconnection("server=desktop-0te71rt;database=productappdb;trusted_connection=true");
+           
             connectionString = DbConnUtil.GetConnectionString();
             cmd = new SqlCommand();
         }
@@ -185,48 +185,7 @@ namespace VirtualArtGalleryApp.Repository
             //    Console.WriteLine("User not found for deletion.");
             //}*/
         }
-        /*
-        public List<User> DisplayAllUsers()
-        {
-
-
-            Console.WriteLine("All Users:\n");
-            List<User> users = new List<User>();
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-                {
-                    cmd.CommandText = "SELECT * FROM Users";
-                    cmd.Connection = sqlConnection;
-                    sqlConnection.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        User userobj = new User();
-                        userobj.Username = (string)reader["Username"];
-                        userobj.Password = (string)reader["Password"];
-                        userobj.Email = (string)reader["Email"];
-                        userobj.FirstName = (string)reader["FirstName"];
-                        userobj.LastName = (string)reader["LastName"];
-                        userobj.DateOfBirth = ((DateTime)reader["DateOfBirth"]).ToString("yyyy-MM-dd");
-                        userobj.ProfilePicture = (string)reader["ProfilePicture"];
-                        //string favoriteArtworksString = reader["FavoriteArtWorks"].ToString();
-                        userobj.FavoriteArtworks = reader["FavoriteArtWorks"].ToString().Split(',').Select(int.Parse).ToList();
-                        
-                        users.Add(userobj);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            //Console.WriteLine($"{user}\n");
-
-            return users;
-        }
-        */
+        
 
         public User UserProfile(string username)
         {

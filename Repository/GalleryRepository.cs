@@ -150,12 +150,12 @@ namespace VirtualArtGalleryApp.Repository
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("INSERT INTO Gallery (Name, Description, Location, CuratorID, OpeningHours) " +
-                                                    "VALUES (@Name, @Description, @Location, @CuratorID, @OpeningHours)", connection);
+                SqlCommand command = new SqlCommand("INSERT INTO Gallery (Name, Description, Location, ArtistID, OpeningHours) " +
+                                                    "VALUES (@Name, @Description, @Location, @ArtistID, @OpeningHours)", connection);
                 command.Parameters.AddWithValue("@Name", gallery.Name);
                 command.Parameters.AddWithValue("@Description", gallery.Description);
                 command.Parameters.AddWithValue("@Location", gallery.Location);
-                command.Parameters.AddWithValue("@CuratorID", gallery.ArtistID);
+                command.Parameters.AddWithValue("@ArtistID", gallery.ArtistID);
                 command.Parameters.AddWithValue("@OpeningHours", gallery.OpeningHours);
 
                 command.ExecuteNonQuery();
@@ -169,12 +169,12 @@ namespace VirtualArtGalleryApp.Repository
                 connection.Open();
 
                 SqlCommand command = new SqlCommand("UPDATE Gallery SET Name = @Name, Description = @Description, " +
-                                                    "Location = @Location, CuratorID = @CuratorID, OpeningHours = @OpeningHours " +
+                                                    "Location = @Location, ArtistID = @ArtistID, OpeningHours = @OpeningHours " +
                                                     "WHERE GalleryID = @GalleryID", connection);
                 command.Parameters.AddWithValue("@Name", gallery.Name);
                 command.Parameters.AddWithValue("@Description", gallery.Description);
                 command.Parameters.AddWithValue("@Location", gallery.Location);
-                command.Parameters.AddWithValue("@CuratorID", gallery.ArtistID);
+                command.Parameters.AddWithValue("@ArtistID", gallery.ArtistID);
                 command.Parameters.AddWithValue("@OpeningHours", gallery.OpeningHours);
                 command.Parameters.AddWithValue("@GalleryID", gallery.GalleryID);
 
